@@ -1,14 +1,43 @@
+# Configurações originais
+
+#services:
+#  project-zomboid:
+#    container_name: pzserver
+#    image: pepecitron/projectzomboid-server
+#    restart: unless-stopped
+#    environment:
+#      SERVER_ADMIN_PASSWORD: "pzadmin"
+#      SERVER_PASSWORD: "secretpassword"
+#    ports:
+#      - "16261:16261/udp"
+#      - "16262:16262/udp"
+#      - ./data/config:/data/config
+#    volumes:
+#      - ./data/server-file:/data/server-file
+
 services:
-  project-zomboid:
-    container_name: pzserver
-    image: pepecitron/projectzomboid-server
+  server-1:
+    container_name: pzserver-test
+    image: pepcitron/projectzomboid-server
     restart: unless-stopped
     environment:
-      SERVER_ADMIN_PASSWORD: "pzadmin"
-      SERVER_PASSWORD: "secretpassword"
+      SERVER_NAME: "server-test" #Nombre del servidor que querais
+      SERVER_PUBLIC: "true"
+      SERVER_PUBLIC_NAME: "server-test" #El nombre público que querais
+      SERVER_PASSWORD: "123456" #La contraseña del servidor (la que le diréis a vuestros a amigos para que se conecten)
+      SERVER_PUBLIC_DESC: "Servidor de prueba 1" #La descripción que se verá en el server
+      ADMIN_USERNAME: "exkelebexeda" #El nombre del administrador. Os aconsejo cambiarlo porque es fácil hackearlo 
+      SERVER_ADMIN_PASSWORD: "p3*&fgr2455fgGFRW" #La contraseña del servidor. Aconsejo aponer alguna más compleja 
+      SERVER_PORT: "17000" #Puerto de server **Podeis cambiar al puerto que querais**
+      SERVER_UDP_PORT: "17001" #Puerto de cliente **Podeis cambiar al puerto que querais, recomendado el número siguiente***
+      LANG: "pt_BR.UTF-8"
+      LC_ALL: "pt_BR.UTF-8"
+      MAP_NAMES: "Muldraugh, KY"
+      #MOD_WORKSHOP_IDS: "" --> En próximos vídeos os explico como se añaden los mod
+      #MOD_NAMES: "" --> En próximos vídeos os explico como se añaden los mod   SEGUIDME Y COMENTAD SI QUERÉIS VIDEO EXPLICANDO Y LO HARÉ
     ports:
-      - "16261:16261/udp"
-      - "16262:16262/udp"
+      - "17000:17000/udp" #Puertos que abrimos en el router, los mismos que server admin port
+      - "17001:17001/udp" #Puertos que abrimos en el router, los mismos que server port
     volumes:
-      - ./data/server-file:/data/server-file
-      - ./data/config:/data/config
+      - ./data/server-file-1:/data/server-file #Copiamos la ruta donde tengamos server-file-1 solo cambiamos de : hacia la izquierda
+      - ./data/config:/data/config #Copiamos la ruta donde tengamos config solo cambiamos de : hacia la izquierda
