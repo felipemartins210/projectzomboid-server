@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     environment:
       SERVER_NAME: "server-test" #Nombre del servidor que querais
-      SERVER_PUBLIC: "true"
+      SERVER_PUBLIC: "false"
       SERVER_PUBLIC_NAME: "server-test" #El nombre público que querais
       SERVER_PASSWORD: "123456" #La contraseña del servidor (la que le diréis a vuestros a amigos para que se conecten)
       SERVER_PUBLIC_DESC: "Servidor de Teste e Homologacao" #La descripción que se verá en el server
@@ -56,6 +56,8 @@ services:
       SERVER_ADMIN_PASSWORD: "server-prod"
       SERVER_PORT: "21000"
       SERVER_UDP_PORT: "21001"
+      LANG: "pt_BR.UTF-8"
+      LC_ALL: "pt_BR.UTF-8"
       MAP_NAMES: "Muldraugh, KY"
       #MOD_WORKSHOP_IDS: ""
       #MOD_NAMES: ""
